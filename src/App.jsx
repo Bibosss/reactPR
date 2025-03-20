@@ -8,6 +8,7 @@ import Basket from './components/pages/Basket/Basket';
 import { BasketProvider } from './components/BasketContent/BasketContent';
 import Reviews from './components/Reviews/Reviews';
 import AddReview from './components/pages/ReviewsWrite/AddReview';
+import ModalPhone from './components/ModalPhone/ModalPhone';
 
 const App = () => {
   return (
@@ -16,9 +17,9 @@ const App = () => {
         <Header />
         <Routes>
           <Route path='/' element={<>
-            {/* <Hero /> */}
+            <Hero />
             <Faq />
-            <Reviews/>
+            <Reviews />
           </>} />
           <Route path='/basket' element={<Basket />} />
           <Route path='/search' element={<SearchResults />} />

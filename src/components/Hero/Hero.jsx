@@ -1,15 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./Hero.module.css"
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import ModalPhone from "../ModalPhone/ModalPhone";
 
 const Hero = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        if (!menuOpen) {
+            setIsModalOpen(false);
+        }
+    }, [menuOpen]);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-    }
+        if (!menuOpen && window.innerWidth <= 1440) {
+            setIsModalOpen(true);
+        } else {
+            setIsModalOpen(false);
+        }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setMenuOpen(false);
+    };
+
+    
 
     return (
         <div className={css.hero}>
@@ -25,7 +45,8 @@ const Hero = () => {
                             Click on me
                         </p>
                     </div>
-                    <ul className={`${css.ulNav} ${menuOpen ? css.isOpen : ""}`}>
+                    {window.innerWidth >= 1440 && (
+                        <ul className={`${css.ulNav} ${menuOpen ? css.isOpen : ""}`}>
                         <li className={css.liNav}>
                             <a className={css.aNav} href="#about_me">About me</a>
                         </li>
@@ -39,8 +60,10 @@ const Hero = () => {
                             <a className={css.aNav} href="#faq">FAQ</a>
                         </li>
                     </ul>
+                    )}
                 </div>
-                <div className={css.apps}>
+                {window.innerWidth >= 1440 && (
+                    <div className={css.apps}>
                     <a className={css.appsTel} href="tel:+380684439426" target="_blank">+380(68)443-94-26</a>
                     <li className={css.heroItemApps}>
                         <a className={css.link} href="https://www.facebook.com/goITclub/" target="_blank">
@@ -58,6 +81,9 @@ const Hero = () => {
                         </a>
                     </li>
                 </div>
+                )}
+
+                <ModalPhone isOpen={isModalOpen} onClose={closeModal} />
             </div>
         </div>
     )

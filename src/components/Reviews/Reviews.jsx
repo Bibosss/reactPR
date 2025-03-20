@@ -19,7 +19,8 @@ const Reviews = () => {
         <section className={css.section}>
             <div className={css.div}>
                 <h2>Reviews</h2>
-                <SwiperComponent slides={slides} />
+                { <p>...loading</p>  && <SwiperComponent slides={slides} />}
+                {/* <SwiperComponent slides={slides} /> */}
             </div>
         </section>
     );
