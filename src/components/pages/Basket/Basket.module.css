@@ -12,41 +12,97 @@
     gap: 20px;
 }
 
-.price {
+.basketList {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
 }
 
-.basketItem {
-    width: 250px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
+.li {
     display: flex;
+    max-width: 350px;
+    border: 1px solid #ddd;
     flex-direction: column;
-    align-items: center;
+    padding: 25px;
+    flex-direction: column;
+    border-radius: 12px;
+    gap: 15px;
 }
 
 .img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+    border-radius: 12px;
 }
 
-.button {
+.h2 {
+    font-size: 16px;
+    font-family: 'Poppins', cursive;
+}
+
+.pReadMore {
+    font-family: 'Winky Sans', cursive;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.readMore {
+    font-weight: bold;
+}
+
+.typeOfProduct {
+    font-family: 'Winky Sans', cursive;
+    font-size: 13px;
+    background-color: rgb(219, 210, 210);
+    color: black;
+    border: 2px solid rgb(189, 186, 186);
+    padding: 5px 10px;
+    width: fit-content;
+    max-width: none;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.quantity {
+    font-family: 'Winky Sans', cursive;
+    font-size: 17px;
+    background-color: rgb(164, 153, 153);
+    color: black;
+    border: 2px solid rgb(114, 111, 111);
+    padding: 5px 10px;
+    width: fit-content;
+    max-width: none;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.divCart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    font-family: 'Winky Sans', cursive;
+    font-size: 15px;
+    color: rgb(189, 186, 186);
+}
+
+.spanPrice {
+    font-family: 'Poppins', cursive;
+}
+
+.buttonCart {
+    font-family: 'Winky Sans', cursive;
+    padding: 3px 20px;
+    transition: all 0.2s ease-in-out 0.1s;
     background-color: brown;
     color: black;
-    border: 1px solid #ddd;
+    border: 2px solid #150c0c;
     border-radius: 8px;
     padding: 10px 20px;
-    margin-top: 5px;
-    transition: all 0.2s ease-in-out 0.1s;
 }
 
-.button:hover {
-    background-color: blue;
-    color: #ddd;
+.buttonCart:hover {
+    background-color: rgb(181, 14, 67);
+    color: #8f8888;
+    border: 2px solid #150c0c;
     transform: scale(1.1);
 }
