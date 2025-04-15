@@ -1,31 +1,32 @@
 .section {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    padding: 20px 0;
-    background: transparent;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  margin: 0;
+  padding: 20px 0;
+  background: transparent;
+  z-index: 0;
 }
 
 .reviewsWrapper {
-    overflow: hidden;
-    position: relative;
-    background: transparent;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  z-index: 0;
 }
 
 .ul {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
 }
 
 .arrow {
-    font-size: 24px;
+  font-size: 24px;
 }

@@ -30,7 +30,7 @@ const Hero = () => {
   };
 
   return (
-    <div className={css.hero}>
+    <section className={css.hero}>
       <div>
         <div className={css.heroTextContainer}>
           <h1 className={css.heroH1}>
@@ -65,11 +65,6 @@ const Hero = () => {
                 </a>
               </li>
               <li className={css.liNav}>
-                <a className={css.aNav} href="#benefits">
-                  Benefits
-                </a>
-              </li>
-              <li className={css.liNav}>
                 <a className={css.aNav} href="#reviews">
                   Reviews
                 </a>
@@ -77,6 +72,11 @@ const Hero = () => {
               <li className={css.liNav}>
                 <a className={css.aNav} href="#faq">
                   FAQ
+                </a>
+              </li>
+              <li className={css.liNav}>
+                <a className={css.aNav} href="#footer">
+                  Footer
                 </a>
               </li>
             </ul>
@@ -117,7 +117,7 @@ const Hero = () => {
           <ModalPhone isOpen={isModalOpen} onClose={closeModal} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

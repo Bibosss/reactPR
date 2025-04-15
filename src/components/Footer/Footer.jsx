@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className={css.footer}>
+    <footer id="footer" className={css.footer}>
       <div className={`container ${css.footerDiv}`}>
         <div className={css.mainDiv}>
           <div className={css.logoDiv}>
@@ -58,18 +58,13 @@ const Footer = () => {
               </a>
             </li>
             <li className={css.liNav}>
-              <a className={css.aNav} href="#benefits">
-                Benefits
-              </a>
-            </li>
-            <li className={css.liNav}>
-              <a className={css.aNav} href="#options">
-                Options
+              <a className={css.aNav} href="#reviews">
+                Reviews
               </a>
             </li>
             <li className={css.liNav}>
               <a className={css.aNav} href="#faq">
-                FAQ
+                Faq
               </a>
             </li>
           </ul>
