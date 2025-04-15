@@ -8,6 +8,8 @@ import {
 } from "../../../redux/products/productsSlice";
 import { fetchProducts } from "../../../redux/products/products";
 import { BasketContext } from "../../BasketContent/BasketContent";
+import { HiViewGridAdd } from "react-icons/hi";
+import { NavLink } from "react-router-dom";
 
 const Products = () => {
   const products = useSelector(selectProducts);
@@ -67,36 +69,64 @@ const Products = () => {
               </button>
             </form>
           </div>
-          <div>
-            <ul className={css.ul}>
-              {filteredProducts.map((product, index) => (
-                <li key={`${product.id}-${index}`} className={css.li}>
-                  <img src={product.images} alt="image" className={css.img} />
-                  <h2 className={css.h2}>{product.title}</h2>
-                  <p className={css.pReadMore}>
-                    {product.description.length > 25
-                      ? product.description.slice(0, 25) + "..."
-                      : product.description}
-                    {product.description.length > 25 && (
-                      <a className={css.readMore}>Read More</a>
-                    )}
-                  </p>
-                  <p className={css.typeOfProduct}>{product.category.name}</p>
-                  <div className={css.divCart}>
-                    <div>
-                      <p className={css.price}>Price</p>
-                      <span className={css.spanPrice}>$ {product.price}</span>
+          <div className={css.divCartAndProducts}>
+            <div>
+              <ul className={css.ul}>
+                {filteredProducts.map((product, index) => (
+                  <li key={`${product.id}-${index}`} className={css.li}>
+                    <img src={product.images} alt="image" className={css.img} />
+                    <h2 className={css.h2}>{product.title}</h2>
+                    <p className={css.pReadMore}>
+                      {product.description.length > 25
+                        ? product.description.slice(0, 25) + "..."
+                        : product.description}
+                      {product.description.length > 25 && (
+                        <a className={css.readMore}>Read More</a>
+                      )}
+                    </p>
+                    <p className={css.typeOfProduct}>{product.category.name}</p>
+                    <div className={css.divCart}>
+                      <div>
+                        <p className={css.price}>Price</p>
+                        <span className={css.spanPrice}>$ {product.price}</span>
+                      </div>
+                      <button
+                        className={css.buttonCart}
+                        onClick={() => addToBasket(product)}
+                      >
+                        Add To Cart
+                      </button>
                     </div>
-                    <button
-                      className={css.buttonCart}
-                      onClick={() => addToBasket(product)}
-                    >
-                      Add To Cart
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={css.divNavLinkIcon}>
+              <div className={css.iconP}>
+                <HiViewGridAdd fill="blue" className={css.icon} />
+                <h2 className={css.categoriesH2}>Categories : </h2>
+              </div>
+              <ul className={css.ulNavLinks}>
+                <NavLink className={css.navLink} to="/all">
+                  All
+                </NavLink>
+                <NavLink className={css.navLink} to="/clothes">
+                  Clothes
+                </NavLink>
+                <NavLink className={css.navLink} to="/electronics">
+                  Electronics
+                </NavLink>
+                <NavLink className={css.navLink} to="/furniture">
+                  Furniture
+                </NavLink>
+                <NavLink className={css.navLink} to="/shoes">
+                  Shoes
+                </NavLink>
+                <NavLink className={css.navLink} to="/miscellaneous">
+                  Miscellaneous
+                </NavLink>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

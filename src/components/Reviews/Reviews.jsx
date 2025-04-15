@@ -7,23 +7,23 @@ import { useEffect } from "react";
 import { fetchReviews } from "../../redux/reviews/reviews";
 
 const Reviews = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const slides = useSelector(selectItems);
+  const slides = useSelector(selectItems);
 
-    useEffect(() => {
-        dispatch(fetchReviews())
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchReviews());
+  }, [dispatch]);
 
-    return (
-        <section className={css.section}>
-            <div className={css.div}>
-                <h2>Reviews</h2>
-                { <p>...loading</p>  && <SwiperComponent slides={slides} />}
-                {/* <SwiperComponent slides={slides} /> */}
-            </div>
-        </section>
-    );
+  return (
+    <section className={css.section} id="reviews">
+      <div className={css.reviewsWrapper}>
+        <h2>Reviews</h2>
+        {<p>...loading</p> && <SwiperComponent slides={slides} />}
+        {/* <SwiperComponent slides={slides} /> */}
+      </div>
+    </section>
+  );
 };
 
 export default Reviews;

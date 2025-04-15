@@ -1,6 +1,78 @@
+/* ------------Start anim for hero----------- */
+
 .hero {
-    background-color:darkgray;
-    padding: 10px;
+    position: relative;
+    background-color: #2c3e50;
+    padding-bottom: 10px;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3498db, #9b59b6, #e74c3c, #f1c40f);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.heroTextContainer {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------End anim for hero----------- */
+
+
+
+.hero>div {
+    position: relative;
+    z-index: 1;
+}
+
+.heroH1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroH1P {
+    display: flex;
+    justify-content: center;
+    line-height: 1.5;
+    font-size: 30px;
 }
 
 .heroContainer {
@@ -22,18 +94,20 @@
     justify-content: center;
     gap: 10px;
     padding: 10px;
-    background: none;
+    background-color: #1e3142;
     border: none;
     cursor: pointer;
     transition: border 250ms ease-in-out, box-shadow 250ms ease-in-out;
     border-radius: 16px;
     box-shadow: 0 0 3px rgba(15, 14, 21, 0.2);
+    transition: all 0.3s ease;
 }
 
 .button:hover {
     border: 1px solid rgba(15, 14, 21, 0.566);
     border-radius: 16px;
     box-shadow: 0 0 5px rgba(15, 14, 21, 0.3);
+    transform: scale(1.05);
 }
 
 .activeMenu {
@@ -91,6 +165,47 @@
     pointer-events: all;
 }
 
+
+
+/* --------------- Start anim for section------------------ */
+
+.ulNav.isOpen .liNav {
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.ulNav.isOpen .liNav:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.ulNav.isOpen .liNav:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ulNav.isOpen .liNav:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.ulNav.isOpen .liNav:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* --------------- End anim for section------------------ */
+
+
+
 .aNav {
     color: black;
     border: 1px solid #000;
@@ -125,19 +240,22 @@
     border-radius: 10px;
     padding: 8px;
     fill:  black;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
     width: 36px;
     height: 36px;
+    transition: all 0.3s ease;
 }
 
 .link:hover {
     border: 1px solid rgba(24, 81, 89, 0.566);
     color: rgba(24, 81, 89, 0.566);
+    transform: translateY(-5px);
 }
 
 .appsTel:hover {
     border: 1px solid rgba(24, 81, 89, 0.566);
     color: rgba(24, 81, 89, 0.566);
+    transform: scale(1.05);
 }
 
 .appsTel {
@@ -154,5 +272,23 @@
     border-radius: 16px;
     padding: 5px 10px;
     white-space: nowrap;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .apps {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 768px) {
+    .apps {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 1440px) {
+    .apps {
+        visibility: visible;
+    }
 }

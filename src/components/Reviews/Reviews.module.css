@@ -1,14 +1,17 @@
 .section {
     margin-top: 20px;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 20px 0;
+    background: transparent;
 }
 
 .reviewsWrapper {
     overflow: hidden;
-}
-
-.div {
     position: relative;
+    background: transparent;
 }
 
 .ul {

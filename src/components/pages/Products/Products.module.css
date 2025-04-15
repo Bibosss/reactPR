@@ -8,15 +8,21 @@
     flex-direction: column;
 }
 
+.divCartAndProducts {
+    display: flex;
+    gap: 40px;
+}
+
 .ul {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+    width: 1000px;
 }
 
 .li {
     display: flex;
-    max-width: 350px;
+    max-width: 300px;
     border: 1px solid #ddd;
     flex-direction: column;
     padding: 25px;
@@ -88,6 +94,49 @@
     color: #8f8888;
     border: 2px solid #150c0c;
     transform: scale(1.1);
+}
+
+.divNavLinkIcon {
+    border: 2px solid rgb(33, 33, 33);
+    height: fit-content;
+    max-height: none;
+    border-radius: 10px;
+}
+
+.iconP {
+    display: flex;
+    gap: 10px;
+    padding: 20px 56px 10px 10px;
+}
+
+.categoriesH2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Winky Sans', cursive;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.icon {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ulNavLinks {
+    display: flex;
+    flex-direction: column;
+}
+
+.navLink {
+    display: flex;
+    padding-left: 10px;
+    background: linear-gradient(to right, #d3d3d3, #f9f9f9);
+    margin-bottom: 10px;
+    font-family: 'Poppins', cursive;
 }
 
 
