@@ -7,7 +7,7 @@ import Basket from "./components/pages/Basket/Basket";
 import { BasketProvider } from "./components/BasketContent/BasketContent";
 import Reviews from "./components/Reviews/Reviews";
 import AddReview from "./components/pages/ReviewsWrite/AddReview";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import Products from "./components/pages/Products/Products";
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/products" element={<Products />} />
         </Routes>
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </BasketProvider>
   );
