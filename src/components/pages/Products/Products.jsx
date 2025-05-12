@@ -9,7 +9,6 @@ import {
 import { fetchProducts } from "../../../redux/products/products";
 import { BasketContext } from "../../BasketContent/BasketContent";
 import { HiViewGridAdd } from "react-icons/hi";
-import { NavLink } from "react-router-dom";
 
 const Products = () => {
   const products = useSelector(selectProducts);
@@ -18,6 +17,7 @@ const Products = () => {
   const [isSearching, setIsSearching] = useState(false);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(SelectError);
+  const [currentCategory, setCurrentCategory] = useState("All");
   const dispatch = useDispatch();
 
   const { addToBasket } = useContext(BasketContext);
@@ -46,6 +46,20 @@ const Products = () => {
     }
   };
 
+  const handleChangeCategory = (category) => {
+    setCurrentCategory(category);
+    if (category === "All") {
+      setFilteredProducts(products);
+      isSearching(false);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category.name === category
+      );
+      setFilteredProducts(filtered);
+      isSearching(true);
+    }
+  };
+
   if (isLoading) return <p>...Loading</p>;
   if (error) return <div>Error: {error}</div>;
   if (!products.length) return <p>No products found</p>;
@@ -70,61 +84,115 @@ const Products = () => {
             </form>
           </div>
           <div className={css.divCartAndProducts}>
-            <div>
-              <ul className={css.ul}>
-                {filteredProducts.map((product, index) => (
-                  <li key={`${product.id}-${index}`} className={css.li}>
-                    <img src={product.images} alt="image" className={css.img} />
-                    <h2 className={css.h2}>{product.title}</h2>
-                    <p className={css.pReadMore}>
-                      {product.description.length > 25
-                        ? product.description.slice(0, 25) + "..."
-                        : product.description}
-                      {product.description.length > 25 && (
-                        <a className={css.readMore}>Read More</a>
-                      )}
-                    </p>
-                    <p className={css.typeOfProduct}>{product.category.name}</p>
-                    <div className={css.divCart}>
-                      <div>
-                        <p className={css.price}>Price</p>
-                        <span className={css.spanPrice}>$ {product.price}</span>
+            {filteredProducts.length === 0 ? (
+              <p>Sadly, but there are not any products now 😔</p>
+            ) : (
+              <div>
+                <ul className={css.ul}>
+                  {filteredProducts.map((product, index) => (
+                    <li key={`${product.id}-${index}`} className={css.li}>
+                      <img
+                        src={product.images}
+                        alt="image"
+                        className={css.img}
+                      />
+                      <h2 className={css.h2}>{product.title}</h2>
+                      <p className={css.pReadMore}>
+                        {product.description.length > 25
+                          ? product.description.slice(0, 25) + "..."
+                          : product.description}
+                        {product.description.length > 25 && (
+                          <a className={css.readMore}>Read More</a>
+                        )}
+                      </p>
+                      <p className={css.typeOfProduct}>
+                        {product.category.name}
+                      </p>
+                      <div className={css.divCart}>
+                        <div>
+                          <p className={css.price}>Price</p>
+                          <span className={css.spanPrice}>
+                            $ {product.price}
+                          </span>
+                        </div>
+                        <button
+                          className={css.buttonCart}
+                          onClick={() => addToBasket(product)}
+                        >
+                          Add To Cart
+                        </button>
                       </div>
-                      <button
-                        className={css.buttonCart}
-                        onClick={() => addToBasket(product)}
-                      >
-                        Add To Cart
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className={css.divNavLinkIcon}>
               <div className={css.iconP}>
                 <HiViewGridAdd fill="blue" className={css.icon} />
-                <h2 className={css.categoriesH2}>Categories : </h2>
+                <h2 className={css.categoriesH2}>Categories: </h2>
               </div>
               <ul className={css.ulNavLinks}>
-                <NavLink className={css.navLink} to="/all">
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "All"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("All")}
+                >
                   All
-                </NavLink>
-                <NavLink className={css.navLink} to="/clothes">
+                </li>
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "Clothes"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("Clothes")}
+                >
                   Clothes
-                </NavLink>
-                <NavLink className={css.navLink} to="/electronics">
+                </li>
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "Electronics"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("Electronics")}
+                >
                   Electronics
-                </NavLink>
-                <NavLink className={css.navLink} to="/furniture">
+                </li>
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "Furniture"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("Furniture")}
+                >
                   Furniture
-                </NavLink>
-                <NavLink className={css.navLink} to="/shoes">
+                </li>
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "Shoes"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("Shoes")}
+                >
                   Shoes
-                </NavLink>
-                <NavLink className={css.navLink} to="/miscellaneous">
+                </li>
+                <li
+                  className={`${css.navLink} ${
+                    currentCategory === "Miscellaneous"
+                      ? `${css.activeNavLink} ${css.active}`
+                      : ""
+                  }`}
+                  onClick={() => handleChangeCategory("Miscellaneous")}
+                >
                   Miscellaneous
-                </NavLink>
+                </li>
               </ul>
             </div>
           </div>
